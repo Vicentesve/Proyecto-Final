@@ -1,47 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- ========== References of login.ejs ==========  -->
     <link rel="stylesheet" href="./../public/css/loginStyle.css">
+    <script
+    src="https://code.jquery.com/jquery-3.4.1.js"
+    integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+    crossorigin="anonymous"></script>
+    <script type="text/javascript" src="./../public/js/login.js"></script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hire a tutor</title>
+    
 </head>
 <body>
 
     <div class="limiter">
         <div class="container-login">
             <div class="wrap-login">
+
                 <div class="logo-login">
                     <img src="./../public/img/logoHireATutor.png" alt="img">
                 </div>
 
+                <!--  ================== FORM FOR LOG IN ================== -->
+
                 <form class="login-form">
 
                     <span class="login-form-title">
-						Login
+						L o g i n
 					</span>
 
                     <div class="wrap-login-form">
-                        <input type="text" class="txt-login" placeholder="Email">
-                              
-                        <span class="icon-login">
+                        <input type="text" id="txt-email" class="txt-login" placeholder="Email">   
+                        <span id="icon-email" class="icon-login">
                             <i class="fas fa-envelope"></i>
                         </span>
+
+                        <div class="wrap-validation" id="wrap-email">
+                            <span>
+                                <i class="fas fa-exclamation-circle"></i>
+                            </span>
+                            <span>Email is missing.</span>
+                        </div>
                     </div>
                     
     
                     <div class="wrap-login-form">
-                        <input type="password" class="txt-login" placeholder="Password">
-                        
-                        <span class="icon-login">
+                        <input type="password" id="txt-password" class="txt-login" placeholder="Password">
+                        <span id="icon-password" class="icon-login">
                             <i class="fas fa-lock"></i>
-                        </span>         
+                        </span>    
+                        
+                        <div class="wrap-validation" id="wrap-password">
+                            <span>
+                                <i class="fas fa-exclamation-circle"></i>
+                            </span>
+                            <span>Password is missing.</span>
+                        </div>
+                        <div class="wrap-validation" id="wrap-userOrPassInc">
+                            <span>
+                                <i class="fas fa-exclamation-circle"></i>
+                            </span>
+                            <span>Email or password are incorrect.</span>
+                        </div>
                     </div>
     
                     <div class="wrap-btn-login">
-                        <button class="btn-login">
+                        <button id="btn-sign-in" class="btn-login">
                             L O G I N
                         </button>
                     </div>
@@ -56,12 +84,133 @@
                     </div>
     
                     <div class="wrap-create-account">
-                        <a href="" class="create-account">
+                        <a href="" class="create-account" id="create-account">
                             Create your Account
                             <i class="fas fa-long-arrow-alt-right"></i>
                         </a>
                     </div>
                 </form>
+
+                <!--  ================== FORM FOR SIGN UP ================== -->
+
+                <form action="/addUser" method="post" class="signup-form">
+
+                    <span class="login-form-title">
+						Create your Account
+					</span>
+
+                    <div class="wrap-login-form">
+                        <input type="text" id="txt-name" class="txt-login" placeholder="Name" name="name"> 
+                        <span id="icon-name" class="icon-login">
+                            <i class="fas fa-user"></i>
+                        </span>
+
+                        <div class="wrap-validation" id="wrap-name">
+                            <span>
+                                <i class="fas fa-exclamation-circle"></i>
+                            </span>
+                            <span>Name is missing.</span>
+                        </div>
+                    </div>
+
+                    <div class="wrap-login-form">
+                        <input type="text" id="txt-last-name" class="txt-login" placeholder="Last name" name="lastName">  
+                        <span id="icon-lastName" class="icon-login">
+                            <i class="fas fa-user"></i>
+                        </span>
+
+                        <div class="wrap-validation" id="wrap-lastName">
+                            <span>
+                                <i class="fas fa-exclamation-circle"></i>
+                            </span>
+                            <span>Last name is missing.</span>
+                        </div>
+                    </div>
+
+                    <div class="wrap-login-form">
+                        <input type="text" id="txt-email-signup" class="txt-login" placeholder="Email" name="email">  
+                        <span id="icon-email-signup" class="icon-login">
+                            <i class="fas fa-envelope"></i>
+                        </span>
+
+                        <div class="wrap-validation" id="wrap-email-signup">
+                            <span>
+                                <i class="fas fa-exclamation-circle"></i>
+                            </span>
+                            <span>Email is missing.</span>
+                        </div>
+                    </div>
+                    
+    
+                    <div class="wrap-login-form">
+                        <input type="password" id="txt-password-signup" class="txt-login" placeholder="Password" name="password">
+                        <span id="icon-password-signup" class="icon-login">
+                            <i class="fas fa-lock"></i>
+                        </span>  
+
+                        <div class="wrap-validation" id="wrap-password-signup">
+                            <span>
+                                <i class="fas fa-exclamation-circle"></i>
+                            </span>
+                            <span>Password is missing.</span>
+                        </div>      
+                    </div>
+
+                    <div class="wrap-login-form">
+                        <input type="password" id="txt-confPassword" class="txt-login" placeholder="Confirm password">
+                        <span id="icon-confPassword" class="icon-login">
+                            <i class="fas fa-lock"></i>
+                        </span> 
+
+                        <div class="wrap-validation" id="wrap-confPassword">
+                            <span>
+                                <i class="fas fa-exclamation-circle"></i>
+                            </span>
+                            <span>Confirm the password.</span>
+                        </div>
+                        <div class="wrap-validation" id="wrap-samePassword">
+                            <span>
+                                <i class="fas fa-exclamation-circle"></i>
+                            </span>
+                            <span>The passwords you entered do not match. </span>
+                        </div>        
+                    </div>
+
+                    <div class="wrap-radio-form">
+
+                        <div class="radio-professor">
+                            <span class="icon-login-radio">
+                                <i class="fas fa-user-tie"></i>
+                            </span>
+    
+                            <input type="radio" name="role" value="professor">
+                            <span>Professor</span>
+                        </div>
+
+                        <div class="student">
+                            <span class="icon-login-radio">
+                                <i class="fas fa-user-graduate"></i>
+                            </span>
+    
+                            <input type="radio" name="role" value="student">
+                            <span>Student</span>
+                        </div>
+                    </div>
+    
+                    <div class="wrap-btn-login" id="btn-sign-up">
+                        <button type="submit" class="btn-login">
+                            S I G N - U P
+                        </button>
+                    </div>
+    
+                    <div class="wrap-log-in">
+                        <a href="#" class="create-account" id="log-in">
+                            Already have an account? Log in
+                            <i class="fas fa-long-arrow-alt-right"></i>
+                        </a>
+                    </div>
+                </form>
+
             </div>
 
             
