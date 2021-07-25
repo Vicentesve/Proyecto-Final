@@ -15,7 +15,7 @@ mongoose.connect(config.db.connectionUrl, {
 var indexRoutes = require('./routes/routeIndex');
 
 // Settings
-app.use(express.static('public'));
+app.use('/public',express.static('public'))
 app.set('port', config.app.port);
 app.set('view engine', 'ejs');
 app.set('views','views');
