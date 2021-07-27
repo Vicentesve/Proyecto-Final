@@ -19,6 +19,7 @@ app.use('/public',express.static('public'))
 app.set('port', config.app.port);
 app.set('view engine', 'ejs');
 app.set('views','views');
+app.use(express.json());
     
 // Middlewares
 app.use(morgan('dev'));

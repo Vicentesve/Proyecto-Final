@@ -1,18 +1,42 @@
 const express = require('express');
-var path = require("path");
 const app = express();
-const User = require('./../models/users')
+const User = require('./../models/users');
 
 app.get('/', (req, res) => {
-    res.render('login')
+    res.render('login'); 
 });
 
-app.post('/addUser', (req, res) => {
-    //var user = new User(req.body);
-    //console.log(user);
-    res.send("listo");
+app.post('/addUser', async (req, res) => {
     
+    var userExists = await User.findOne( {email: req.body.email });
+    console.log(userExists);
+    if (userExists == null) {
+        var user = new User(req.body);
+        await user.save();
+         
+    }
+    return res.json(userExists);
+
 });
+
+app.post('/home', async (req, res) => {
+
+    var userExists = await User.findOne( {email: req.body.email });
+    if(userExists != null) {
+        if (userExists.password == req.body.password){
+            console.log('BIENVENIDO!');
+            res.render('home', userExists);
+        }else {
+            res.render('login', {fail: true});
+        }
+    } else {
+        res.render('login', {fail: true});
+    }
+
+
+     
+});
+
 
 
 module.exports = app;

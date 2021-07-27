@@ -7,6 +7,7 @@
     src="https://code.jquery.com/jquery-3.4.1.js"
     integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
     crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script type="text/javascript" src="./../public/js/login.js"></script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
     <meta charset="UTF-8">
@@ -93,7 +94,7 @@
 
                 <!--  ================== FORM FOR SIGN UP ================== -->
 
-                <form action="/addUser" method="post" class="signup-form">
+                <form class="signup-form">
 
                     <span class="login-form-title">
 						Create your Account
@@ -183,7 +184,7 @@
                                 <i class="fas fa-user-tie"></i>
                             </span>
     
-                            <input type="radio" name="role" value="professor">
+                            <input type="radio" name="role" value="1" id="rb-professor">
                             <span>Professor</span>
                         </div>
 
@@ -192,9 +193,15 @@
                                 <i class="fas fa-user-graduate"></i>
                             </span>
     
-                            <input type="radio" name="role" value="student">
+                            <input type="radio" name="role" value="0" id="rb-student">
                             <span>Student</span>
-                        </div>
+                        </div> 
+                    </div>
+                    <div class="wrap-validation" id="wrap-profOrStudent">
+                        <span>
+                            <i class="fas fa-exclamation-circle"></i>
+                        </span>
+                        <span>Select if you are a professor or a student.</span>
                     </div>
     
                     <div class="wrap-btn-login" id="btn-sign-up">
