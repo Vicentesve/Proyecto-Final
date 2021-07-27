@@ -1,0 +1,49 @@
+@font-face {
+    font-family: Poppins-Regular;
+    src: url('/public/fonts/poppins/Poppins-Regular.ttf');
+}
+  
+@font-face {
+    font-family: Poppins-Bold;
+    src: url('/public/fonts/poppins/Poppins-Bold.ttf');
+}
+
+@font-face {
+    font-family: Poppins-Medium;
+    src: url('./../fonts/poppins/Poppins-Medium.ttf'); 
+}
+
+@font-face {
+    font-family: Montserrat-Bold;
+    src: url('./../fonts/montserrat/Montserrat-Bold.ttf'); 
+}
+
+@font-face {
+    font-family: Poppins-Light;
+    src: url('/public/fonts/poppins/Poppins-Light.ttf');
+}
+
+.coursesList {
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.course {
+    border: 2px solid black;
+    list-style-type: none;
+    width: 20%;
+    margin: 20px;
+    padding: 2px;
+    font-family: Poppins-Medium;
+}
+
+.courseImg {
+    width: 90%;
+}
+
+.courseName {
+    margin: 5px;
+}
+
