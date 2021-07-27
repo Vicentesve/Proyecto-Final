@@ -19,18 +19,20 @@ app.post('/addUser', async (req, res) => {
 
 });
 
-app.post('/home', async (req, res) => {
+app.post('/login', async (req, res) => {
 
     var userExists = await User.findOne( {email: req.body.email });
     if(userExists != null) {
         if (userExists.password == req.body.password){
-            console.log('BIENVENIDO!');
+            console.log(userExists.email);
+            console.log(userExists.password);
+
             res.render('home', userExists);
         }else {
-            res.render('login', {fail: true});
+            //res.render('login', {fail: true});
         }
     } else {
-        res.render('login', {fail: true});
+        //res.render('login', {fail: true});
     }
 
 

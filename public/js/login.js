@@ -34,22 +34,7 @@ $(document).ready(function() {
             $("#wrap-password").hide();
         }
 
-        e.preventDefault();
-
-        var user = {
-            email: $("#txt-email").val().trim().trim(),
-            password: $("#txt-password").val().trim(),
-        };
-
-        $.post('/home', user)
-        /*.then(function(pUser) {
-            if (pUser.email === null){
-                alert('Usuario o contraseña incorrecto');
-            }else{
-                redirect()
-            }
-            
-        });*/
+        
 
     });
 
