@@ -5,7 +5,7 @@
   
 @font-face {
     font-family: Poppins-Bold;
-    src: url('/public/fonts/poppins/Poppins-Bold.ttf');
+    src: url('./../fonts/poppins/Poppins-Bold.ttf');
 }
 
 @font-face {
@@ -24,10 +24,13 @@
 }
 
 .coursesList {
-
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
+    width: 100%;
+}
+.coursesOwner{
+    font-family: Poppins-Bold;
 }
 
 .course {
@@ -37,6 +40,7 @@
     margin: 20px;
     padding: 2px;
     font-family: Poppins-Medium;
+    border-radius: 10px;
 }
 
 .courseImg {
@@ -45,5 +49,120 @@
 
 .courseName {
     margin: 5px;
+}
+
+.containerCourses {
+    width: 92%;
+    background: #fff;
+    border-radius: 10px;
+    padding: 5% 5% 2% 5%;
+    margin-top: 20px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0 auto;
+}
+
+.limiterCourses {
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    margin: 0 auto;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center; /* Centra el contenido de contendor horizontalmene */
+    align-content: flex-start;
+    background-image: url('/public/img/loginBG.jpg');
+    flex-wrap: wrap;
+    align-items: center;  /*Centra el contenido de contendor verticalmente*/
+}
+
+.courseCard {
+    position: absolute;
+    z-index: 2;
+    width: 40%;
+    background: #fff;
+    border-radius: 10px;
+    padding: 5% 5% 2% 5%;
+    margin-top: 20px;
+    display: none;
+}
+
+.courseNameEdit {
+    font-family: Poppins-Bold;
+    margin-bottom: 30px;
+}
+
+.editCourseField {
+    font-family: Poppins-Medium;
+    font-size: 15px;
+    line-height: 1.5;
+    color: #666666;
+
+    display: block;
+    width: 100%;
+    background: #e6e6e6;
+    height: 50px;
+    border-radius: 25px;
+    padding: 0 30px 0 68px;
+    border: 0px;
+}
+
+.field {
+    position: relative;
+    width: 85%;
+    margin-bottom: 10px;
+}
+
+.courseForm{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.icon-form {
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    position: absolute;
+    border-radius: 25px;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding-left: 20px;
+    pointer-events: none;
+    color: #666666;
+}
+
+.btn-submit {
+    width: 65%;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #fff;
+    transition: all 0.4s;
+    border-radius: 25px;
+    font-family: Montserrat-Bold;
+    font-size: 15px;
+    color: #333333;
+    line-height: 1.5;
+    border: 1px solid #333333;
+}
+
+.btn-submit:hover {
+    background: white;
+    color: white;
+    background: rgba(9, 61, 158, 0.8);
+    border: 2px solid rgba(9, 61, 158, 0.8);
+    font-size: 20px;
+    cursor: pointer;
 }
 

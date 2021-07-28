@@ -3,7 +3,11 @@ const app = express();
 const User = require('./../models/users');
 
 app.get('/', (req, res) => {
-    res.render('login'); 
+    res.render('login')
+});
+
+app.get('/mycourses', (req, res) => {
+    res.render('myCourses', {title: 'My CoursesA'}); 
 });
 
 app.post('/addUser', async (req, res) => {
