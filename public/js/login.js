@@ -1,16 +1,6 @@
 $(document).ready(function() {
     
-    $( "#create-account" ).click(function(e) {
-        e.preventDefault();
-        $( ".login-form" ).hide();
-        $( ".signup-form" ).show();
-    });
-
-    $( "#log-in" ).click(function() {
-        $( ".login-form" ).show();
-        $( ".signup-form" ).hide();
-    });
-
+  
     /* ========== Validations for sign in ========== */
 
     $("#btn-sign-in").click(function(e) {
@@ -34,14 +24,12 @@ $(document).ready(function() {
             $("#wrap-password").hide();
         }
 
-        
-
     });
 
     /* ========== Validations for signup ========== */
 
     $("#btn-sign-up").click(function(e) {
-
+        
         if(!$("#txt-name").val().trim()) {
             $("#icon-name").addClass("icon-validation");
             $("#wrap-name").show();
@@ -90,9 +78,11 @@ $(document).ready(function() {
         if($("#txt-confPassword").val().trim() && $("#txt-password-signup").val().trim()) {
             if($("#txt-confPassword").val().trim() != $("#txt-password-signup").val().trim()) {
                 $("#icon-confPassword").addClass("icon-validation");
-            $("#wrap-samePassword").show();
-            e.preventDefault();
-            } 
+                $("#wrap-samePassword").show();
+                e.preventDefault();
+            } else {
+                $("#wrap-samePassword").hide();
+            }
         } else {
             $("#wrap-samePassword").hide();
         }
@@ -102,11 +92,21 @@ $(document).ready(function() {
             e.preventDefault();
         } else {
             $("#wrap-profOrStudent").hide();
-        } 
+        }
 
-        e.preventDefault();
+        /* $.get('/findUser/' + $("#txt-email-signup").val().trim(), function(data) {
+            console.log(data);
+            if(data == null) {
+                alert('El correo no existe');
+            } else{
+                console.log(email);
+                alert('El correo ya existe');
 
-        var role;
+               
+            } 
+        }); */
+
+        /* var role;
         if($('#rb-professor').is(':checked')) {
             var role = true;
         } else { 
@@ -127,11 +127,10 @@ $(document).ready(function() {
                 swal("Email already exists!", "Try to sign-up with another email", "warning");
             } else {
                 swal("Account create succesfully!", `Welcome ${$("#txt-name").val().trim()} ${$("#txt-last-name").val().trim()} `, "success");
-                //$(location).attr('href',"/");
-                
+                $.get("/home");
             }
           
-        });
+        }); */
     });
 
 });

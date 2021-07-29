@@ -121,6 +121,10 @@ li a:hover {
     margin-right: 30px;
 }
 
+.user-welcome {
+    font-family: Poppins-Bold;
+}
+
 .btn-profile {
     width: 40px;
     height: 40px;
@@ -150,26 +154,5 @@ li a:hover {
     font-size: 15px;
 }
 
-/* .profile {
-    width: 300px;
-    margin-top: 15px;
-    border: 1px solid black;
-}
 
-.profile-name {
-    border: 1px solid black;
-    margin-right: 20px;
-}
-
-.profile button {
-    width: 40px;
-    height: 40px;
-    border-radius: 30px;
-    background: transparent;
-    border: 1px solid black;
-}
-
-.btn-icon{
-    font-size: 18px;
-} */
   

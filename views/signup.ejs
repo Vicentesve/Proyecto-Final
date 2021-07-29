@@ -1,0 +1,134 @@
+<%- include ("./templates/headerLogin") %>
+
+<!--  ================== FORM FOR SIGN UP ================== -->
+
+<form action="/addUser" method="POST" class="signup-form">
+
+    <span class="login-form-title">
+        Create your Account
+    </span>
+
+    <div class="wrap-login-form">
+        <input type="text" id="txt-name" class="txt-login" placeholder="Name" name="name"> 
+        <span id="icon-name" class="icon-login">
+            <i class="fas fa-user"></i>
+        </span>
+
+        <div class="wrap-validation" id="wrap-name">
+            <span>
+                <i class="fas fa-exclamation-circle"></i>
+            </span>
+            <span>Name is missing.</span>
+        </div>
+    </div>
+
+    <div class="wrap-login-form">
+        <input type="text" id="txt-last-name" class="txt-login" placeholder="Last name" name="lastName">  
+        <span id="icon-lastName" class="icon-login">
+            <i class="fas fa-user"></i>
+        </span>
+
+        <div class="wrap-validation" id="wrap-lastName">
+            <span>
+                <i class="fas fa-exclamation-circle"></i>
+            </span>
+            <span>Last name is missing.</span>
+        </div>
+    </div>
+
+    <div class="wrap-login-form">
+        <input type="text" id="txt-email-signup" class="txt-login" placeholder="Email" name="email">  
+        <span id="icon-email-signup" class="icon-login">
+            <i class="fas fa-envelope"></i>
+        </span>
+
+        <div class="wrap-validation" id="wrap-email-signup">
+            <span>
+                <i class="fas fa-exclamation-circle"></i>
+            </span>
+            <span>Email is missing.</span>
+        </div>
+    </div>
+    
+
+    <div class="wrap-login-form">
+        <input type="password" id="txt-password-signup" class="txt-login" placeholder="Password" name="password">
+        <span id="icon-password-signup" class="icon-login">
+            <i class="fas fa-lock"></i>
+        </span>  
+
+        <div class="wrap-validation" id="wrap-password-signup">
+            <span>
+                <i class="fas fa-exclamation-circle"></i>
+            </span>
+            <span>Password is missing.</span>
+        </div>      
+    </div>
+
+    <div class="wrap-login-form">
+        <input type="password" id="txt-confPassword" class="txt-login" placeholder="Confirm password">
+        <span id="icon-confPassword" class="icon-login">
+            <i class="fas fa-lock"></i>
+        </span> 
+
+        <div class="wrap-validation" id="wrap-confPassword">
+            <span>
+                <i class="fas fa-exclamation-circle"></i>
+            </span>
+            <span>Confirm the password.</span>
+        </div>
+        <div class="wrap-validation" id="wrap-samePassword">
+            <span>
+                <i class="fas fa-exclamation-circle"></i>
+            </span>
+            <span>The passwords you entered do not match. </span>
+        </div>        
+    </div>
+
+    <div class="wrap-radio-form">
+
+        <div class="radio-professor">
+            <span class="icon-login-radio">
+                <i class="fas fa-user-tie"></i>
+            </span>
+
+            <input type="radio" name="role" value="1" id="rb-professor">
+            <span>Professor</span>
+        </div>
+
+        <div class="student">
+            <span class="icon-login-radio">
+                <i class="fas fa-user-graduate"></i>
+            </span>
+
+            <input type="radio" name="role" value="0" id="rb-student">
+            <span>Student</span>
+        </div> 
+    </div>
+    <div class="wrap-validation" id="wrap-profOrStudent">
+        <span>
+            <i class="fas fa-exclamation-circle"></i>
+        </span>
+        <span>Select if you are a professor or a student.</span>
+    </div>
+
+    <div class="wrap-btn-login" id="btn-sign-up">
+        <button type="submit" class="btn-login">
+            S I G N - U P
+        </button>
+    </div>
+    <% if (message.length > 0) { %>
+        <script type="text/javascript">
+            swal("Email already exists!", "Try to sign-up with another email", "warning");
+       </script>
+    <% }  %>
+        
+    <div class="wrap-log-in">
+        <a href="/login" class="create-account" id="log-in">
+            Already have an account? Log in
+            <i class="fas fa-long-arrow-alt-right"></i>
+        </a>
+    </div>
+</form>
+
+<%- include ("./templates/footerLogin") %>

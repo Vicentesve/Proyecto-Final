@@ -74,10 +74,6 @@ body, html {
     width: 350px;
 }
 
-.signup-form {
-    display: none;
-}
-
 .login-form-title {
     font-family: Poppins-Bold;
     font-size: 30px;
