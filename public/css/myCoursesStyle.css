@@ -26,7 +26,7 @@
 .coursesList {
     display: flex;
     flex-wrap: wrap;
-    justify-content: flex-start;
+    justify-content: space-between;
     width: 100%;
 }
 .coursesOwner{
@@ -87,7 +87,7 @@ body {
     width: 40%;
     background: #fff;
     border-radius: 10px;
-    padding: 5% 5% 2% 5%;
+    padding: 3% 3% 2% 5%;
     margin-top: 20px;
     display: none;
 }
@@ -166,3 +166,57 @@ body {
     cursor: pointer;
 }
 
+.icon-cancel {
+    width: 100%;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: flex-end;
+    color: #666666;
+}
+
+.icon-cancel:hover {
+    color: black;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+.customFileBtn {
+    text-align: center;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.btn-delete {
+    margin-top: 10px;
+    width: 65%;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #fff;
+    transition: all 0.4s;
+    border-radius: 25px;
+    font-family: Montserrat-Bold;
+    font-size: 15px;
+    color: #333333;
+    line-height: 1.5;
+    border: 1px solid #333333;
+}
+
+.btn-delete:hover {
+    background: white;
+    color: white;
+    background: rgba(226, 14, 7, 0.8);
+    border: 2px solid rgba(226, 14, 7, 0.8);
+    font-size: 20px;
+    cursor: pointer;
+}
+
+@media (max-width: 820px) {
+    .courseCard {
+        width: 328px;
+    }
+}
