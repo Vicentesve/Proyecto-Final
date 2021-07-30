@@ -1,0 +1,71 @@
+<%- include ("./templates/headerHome") %>
+<div class="container-publish">
+    <div class="wrap-publish-form">
+        <div class="title-form">
+            <h1>Publish your course</h1>
+        </div>
+        <div class="img-form">
+            <img src="/public/img/logoHireATutor.png" alt="">
+        </div>
+        <div class="form-publish">
+            <form action="/publishCourse" method="POST">
+                <div class="wrap-form">
+                    <input type="text" id="txt-course-name" class="txt-course" placeholder="Course name" name="name">
+                    <span id="icon-nameCourse" class="icon-course">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                    </span>
+                    <div class="wrap-validation" id="wrap-course">
+                        <span>
+                            <i class="fas fa-exclamation-circle"></i>
+                        </span>
+                        <span>Course name is missing.</span>
+                    </div>
+                </div> 
+                <div class="wrap-form">
+                    <div class="wrap-textarea">
+                        <textarea class="txt-course textarea-desc" name="description" id="txt-course-description" cols="30" rows="10" 
+                        placeholder="Description of the course"></textarea>
+                        <span id="icon-descrCourse" class="icon-textarea">
+                            <i class="fas fa-file-signature"></i>
+                        </span>
+                    </div>
+                    
+                    <div class="wrap-validation" id="wrap-course-description">
+                        <span>
+                            <i class="fas fa-exclamation-circle"></i>
+                        </span>
+                        <span>Description course is missing.</span>
+                    </div>
+                </div> 
+                <div class="wrap-form file-upload">
+                    <div class="file-select">
+                        <div class="file-select-button" id="fileName">
+                            <span>
+                                <i class="fas fa-upload"></i>
+                            </span>
+                        </div>
+                        <div class="file-select-name" id="noFile">No file chosen...</div> 
+                        <input type="file" name="image" id="image">
+                    </div>
+                    <div class="wrap-validation" id="wrap-course-img">
+                        <span>
+                            <i class="fas fa-exclamation-circle"></i>
+                        </span>
+                        <span>Image course is missing.</span>
+                    </div>
+                </div> 
+                <div class="wrap-btn-login">
+                    <button id="btn-publish-course" class="btn-publish">
+                        P U B L I S H <br>
+                        C O U R S E
+                    </button>
+                </div>
+                
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+   
+</script>

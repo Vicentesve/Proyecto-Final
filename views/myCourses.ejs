@@ -1,0 +1,54 @@
+<%- include ("./templates/headerHome") %>
+<link rel="stylesheet" href="./../public/css/myCourses.css">
+<div class="limiterCourses">
+    <div class="containerCourses" data-editing="false">
+        <h2 class="coursesOwner">Current courses of: userName</h2>
+        <ul class="coursesList">
+            <% for(var i=0; i<9; i++){ %>
+                <li class="course">
+                    <img src="./../public/img/logoHireATutor.png" class="courseImg">
+                    <p class="courseName">course Name <%= i %></p>
+                </li>
+            <% } %>
+        </ul>
+    </div>
+
+    <div class="courseCard">
+        
+        <form action="" method="POST" class="courseForm">
+            <span class="icon-cancel">
+                <i class="far fa-times-circle fa-2x"></i>
+            </span>
+            <p class="courseNameEdit">Course Name to Edit</p>
+            <div class="field">
+                <input type="text" placeholder="Course Name" name="courseName" class="editCourseField" required> 
+            <span id="icon-name" class="icon-form">
+                <i class="fas fa-signature"></i>
+            </span>
+            </div>
+            <div class="field">
+                <input type="text" placeholder="Course Field" name="courseField" class="editCourseField" required> 
+                <span id="icon-name" class="icon-form">
+                    <i class="fas fa-puzzle-piece"></i>
+                </span>
+            </div>
+            <div class="field">
+                <label for="myfile" class="customFileBtn editCourseField">Select an image</label>
+                <input id="myfile" type="file" placeholder="Course Image" name="courseImage" class="editCourseField" required> 
+                <span id="icon-name" class="icon-form">
+                    <i class="fas fa-image"></i>
+                </span>
+            </div>
+            
+            
+            <button type="submit" class="btn-submit">
+                Submit
+            </button>
+            <button type="submit" class="btn-delete">
+                Delete
+            </button>
+        </form>
+    </div>
+</div>
+
+<script type="text/javascript" src="./../public/js/myCourses.js"></script>

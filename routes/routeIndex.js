@@ -1,9 +1,23 @@
 const express = require('express');
 const app = express();
 const User = require('./../models/users');
+const Course = require('./../models/courses');
 var flash = require("connect-flash");
 var jwt = require("jsonwebtoken");
 const verify = require("../middlewhere/verifyAccess");
+var multer = require('multer');
+var fs = require('fs');
+
+var storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, 'uploads')
+    },
+    filename: (req, file, cb) => {
+        cb(null, file.fieldname + '-' + Date.now())
+    }
+});
+
+var upload = multer({ storage: storage });
 
 app.get('/login', (req, res) => {
     var message = req.flash('message')
@@ -68,6 +82,28 @@ app.post('/addUser', async (req, res) => {
 app.get('/', verify, async (req, res) => {
     var user = await User.find({email: req.userId});
     res.render('home',{user})
+});
+
+app.get('/logOff',  async (req,res) =>{
+
+    res.clearCookie("token");
+    res.redirect('/');
+});
+
+app.get('/myCourses', verify, async (req, res) =>{
+    var user = await User.find({email: req.userId});
+    res.render('myCourses', {user});
+});
+
+app.get('/publishCourse', verify, async (req, res) => {
+    var user = await User.find({email: req.userId});
+    res.render('publishACourse', {user});
+});
+
+app.post('/publishCourse', upload.single('image'), verify, async(req, res) => {
+    var user = await User.find({email: req.userId});
+    console.log(req.file);
+    var course = new Course(req.body);
 });
 
 module.exports = app;

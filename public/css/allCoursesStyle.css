@@ -1,0 +1,17 @@
+.container-all-courses {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url('./../img/loginBG.jpg');
+    flex-wrap: wrap;
+    min-height: 90vh;
+    flex-wrap: wrap;
+}
+
+.wrap-all-courses {
+    width: 80%;
+    border-radius: 20px;
+    background: white;
+    display: flex;
+}
