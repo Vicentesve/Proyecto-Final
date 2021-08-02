@@ -203,3 +203,40 @@
 .icon-validation {
     padding-bottom: 25px;
 }
+
+
+@media (max-width: 414px)  { 
+
+    .container-publish {
+        min-height: 100vh;
+    }
+    .wrap-publish-form {
+        width: 90%;
+        padding-left: 10px;
+        padding-right: 10px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+}
+
+@media (max-width: 834px) and (min-width: 415px)  {
+    
+    .container-publish {
+        min-height: 100vh;
+    }
+
+    .wrap-publish-form {
+        width: 80%;
+    }
+}
+
+@media (max-width: 1500px) and (min-width: 835px)  {
+    
+    .container-publish {
+        min-height: 100vh;
+    }
+
+    .wrap-publish-form {
+        width: 60%;
+    }
+}

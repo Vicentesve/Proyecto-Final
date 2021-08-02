@@ -19,7 +19,7 @@ $(document).ready(function(e) {
             $("#wrap-course-description").hide();
         }
 
-        if ($("#chooseFile")[0].files.length === 0) {
+        if ($("#image")[0].files.length === 0) {
             $("#wrap-course-img").show();
             e.preventDefault();
         } else {

@@ -1,9 +1,33 @@
 <%- include ("./templates/headerHome") %>
 
     <div class="container-all-courses">
-        <div class="wrap-all-courses">
-            
-        </div>
+        <% items.forEach(function(item) { %>
+            <div class="wrap-all-courses">
+                <div class="imgCourse">
+                    <img src="data:image/<%=item.img.contentType%>;base64,
+					<%=item.img.data.toString('base64')%>" alt="">
+                </div>
+                <div class="title-course course">
+                    <span class="ref-course">Name course:</span><span class="ref-value"> <%= item.name %> </span>
+                </div>
+                <div class="description-course course">
+                    <span class="ref-course">Description course:</span><span class="ref-value"> <%= item.description %></span>
+                </div>
+                <div class="professor-name course">
+                    <span class="ref-course">Professor name:</span><span  class="ref-value"> <%= item.professorName %></span>
+                </div>
+                <div class="professor-email course">
+                    <span class="ref-course">Email:</span><span class="ref-value"> <%= item.professorEmail %></span>
+                </div>
+                <div class="btn-course">
+                    <a href="/registerCourse/<%= item._id%>">
+                        <button id="btn-register" class="btn-register">
+                            R E G I S T E R
+                        </button>
+                    </a>
+                </div>
+            </div>
+        <% }) %>
     </div>
 
 <%- include ("./templates/footerLogin") %>

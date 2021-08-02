@@ -10,7 +10,12 @@ var userSchema = Schema ({
     role: {
         type: Boolean,
         default: false   //False is for students, True is for professors
-    }
+    },
+    courses: [
+        {
+            courseId: String
+        }
+    ]
 });
 
 userSchema.methods.encryptPassword = function(password){

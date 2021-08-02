@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+var path = require('path');
 const User = require('./../models/users');
 const Course = require('./../models/courses');
 var flash = require("connect-flash");
@@ -81,7 +82,16 @@ app.post('/addUser', async (req, res) => {
 
 app.get('/', verify, async (req, res) => {
     var user = await User.find({email: req.userId});
-    res.render('home',{user})
+
+    Course.find({users: {$not: {$elemMatch: {userId: user[0]._id}}}}).sort({_id:-1}).exec(function(err, items) {
+        if (err) {
+            console.log(err);
+            res.status(500).send('An error occurred', err);
+        }
+        else {
+            res.render('home', { items: items, user });
+        }
+    });
 });
 
 app.get('/logOff',  async (req,res) =>{
@@ -92,18 +102,89 @@ app.get('/logOff',  async (req,res) =>{
 
 app.get('/myCourses', verify, async (req, res) =>{
     var user = await User.find({email: req.userId});
-    res.render('myCourses', {user});
+    var items = await Course.find({users: {$elemMatch: {userId: user[0]._id}}});
+    res.render('myCourses', {user, items});
 });
 
 app.get('/publishCourse', verify, async (req, res) => {
     var user = await User.find({email: req.userId});
-    res.render('publishACourse', {user});
+    var message = req.flash('message')
+    res.render('publishACourse', {user, message});
 });
 
 app.post('/publishCourse', upload.single('image'), verify, async(req, res) => {
     var user = await User.find({email: req.userId});
-    console.log(req.file);
-    var course = new Course(req.body);
+    var course = {
+        name: req.body.name,
+        description: req.body.description,
+        professorName: user[0].name + ' ' + user[0].lastName,
+        professorEmail: user[0].email,
+        img: {
+            data: fs.readFileSync(path.join('./uploads/' + req.file.filename)),
+            contentType: 'image/png'
+        },
+        users: [ {userId: user[0]._id} ]
+    }
+
+    var message = 'Your course ' + course.name + ' has been created successfully!';
+
+    Course.create(course, async (err, item) => {
+        if (err) {
+            console.log(err);
+        }
+        else {
+            await item.save();
+            req.flash('message', message);
+            res.redirect('publishCourse');
+        }
+    });
+    
+});
+
+app.get('/registerCourse/:id', verify, async(req, res) => {
+    var user = await User.find({email: req.userId});
+    var id = req.params.id;
+    await Course.updateOne({_id: id}, {$push: {users: {userId: user[0]._id}}});
+    await User.updateOne({_id: user[0]._id}, {$push: {courses: {courseId: id}}});
+    res.redirect('/')
+});
+
+app.get('/deleteCourse/:id', verify, async (req, res) => {
+    var user = await User.find({email: req.userId});
+    var idCourse = req.params.id;
+    console.log(idCourse);
+    if(user[0].role === true) {
+        await Course.remove({_id: idCourse});
+    }
+
+    //await User.deleteOne({courses: {courseId: idCourse}});
+    //await User.updateOne({$pull: {courses: {courseId: idCourse}}});
+    await User.updateOne( { _id: user[0]._id }, { $pull: { courses: { courseId: idCourse } } } );
+    await Course.updateOne( { _id: idCourse }, { $pull: { users: { userId: user[0]._id } } } );
+    res.redirect('/myCourses');
+    
+});
+
+app.post('/editCourse/:id', upload.single('image'), verify, async (req, res) => {
+    var user = await User.find({email: req.userId});
+    var course = await Course.find({_id:  req.params.id});
+    console.log(course);
+    var courseObj = {
+        name: req.body.name,
+        description: req.body.description,
+        professorName: course[0].professorName,
+        professorEmail: course[0].professorEmail,
+        img: {
+            data: course[0].img.data,
+            contentType: 'image/png'
+        },
+        users: [ {userId: user[0]._id} ]
+    }
+    await Course.updateOne({_id: req.params.id}, courseObj);
+
+    res.redirect('/myCourses');
+
+
 });
 
 module.exports = app;

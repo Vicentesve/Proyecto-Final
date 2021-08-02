@@ -8,7 +8,7 @@
             <img src="/public/img/logoHireATutor.png" alt="">
         </div>
         <div class="form-publish">
-            <form action="/publishCourse" method="POST">
+            <form action="/publishCourse" method="POST" enctype="multipart/form-data">
                 <div class="wrap-form">
                     <input type="text" id="txt-course-name" class="txt-course" placeholder="Course name" name="name">
                     <span id="icon-nameCourse" class="icon-course">
@@ -61,11 +61,28 @@
                     </button>
                 </div>
                 
+                
             </form>
         </div>
     </div>
 </div>
 
 <script>
-   
+    $('#image').bind('change', function () {
+        var filename = $("#image").val();
+        if (/^\s*$/.test(filename)) {
+            $(".file-upload").removeClass('active');
+            $("#noFile").text("No file chosen..."); 
+        }
+        else {
+            $(".file-upload").addClass('active');
+            $("#noFile").text(filename.replace("C:\\fakepath\\", "")); 
+        }
+    });
+
+    var message = "<%= message %>";
+    if (message.length > 0) {
+        swal("Congratulations!", message, "success");
+    }
+
 </script>

@@ -10,7 +10,13 @@ var courseSchema = Schema ({
     {
         data: Buffer,
         contentType: String
-    }
+    },
+    users: [
+        {
+            userId: String
+        }
+    ]
 });
 
 module.exports = mongoose.model('courses', courseSchema);
+
