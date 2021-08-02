@@ -197,7 +197,7 @@ li a:hover {
 }
 
 
-@media (max-width: 1850px)  { 
+@media (max-width: 1200px)  { 
 
     .wrap-nav {
        flex-wrap: wrap;
